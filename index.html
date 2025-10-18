@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Header with Mega Menu & Mobile Filter</title>
+
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+        }
+        a{
+            color: black;
+        }
+        a:hover{
+            color: orange;
+        }
+
+        .header {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: #000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-link:hover {
+            color: #ff6b35;
+        }
+
+        .dropdown {
+            cursor: pointer;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff6b35;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* ===== DESKTOP MEGA MENU ===== */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 999;
+            padding: 20px 40px;
+            border-top: 1px solid #eee;
+        }
+
+        .mega-menu.active {
+            display: flex;
+            gap: 30px;
+        }
+
+        .sidebar {
+            width: 200px;
+            background: #000;
+            color: white;
+            padding: 20px;
+            min-height: 300px;
+           
+        }
+
+        .sidebar-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: background 0.2s;
+            border-radius: 4px;
+        }
+
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background: #4a4949;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            gap: 30px;
+            padding: 0 10px;
+        }
+
+        .column h4 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .column a {
+            display: block;
+            color: #555;
+            text-decoration: none;
+            padding: 8px 0;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .column a:hover {
+            color: #ff6b35;
+        }
+
+        .promo-image {
+            width: 300px;
+            height: 300px;
+            background: url('Images/shoper.jpg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            
+        }
+
+        .promo-text {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #333;
+        }
+
+        /* ===== MOBILE MENU ===== */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            height: 100vh;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .mobile-menu-list {
+            list-style: none;
+        }
+
+        .mobile-menu-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sub-menu {
+            display: none;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .sub-menu.active {
+            display: block;
+        }
+
+        .sub-menu-item {
+            padding: 8px 0;
+            color: #555;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sub-menu-item:hover {
+            color: #ff6b35;
+        }
+
+        /* ===== PRODUCTS SECTION ===== */
+        .products-section {
+            padding: 30px 20px;
+            background: #fafafa;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 16px;
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        /* ===== RESPONSIVE BREAKPOINTS ===== */
+        @media (max-width: 768px) {
+
+            .nav-menu,
+            .user-actions {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .mega-menu {
+                display: none !important;
+                /* Hide desktop mega menu on mobile */
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu {
+                display: none;
+            }
+
+            .products-section {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+        }
+
+
+
+/* ===== HERO SECTION STYLES ===== */
+         .hero-section {
+            background: #F7F2EA;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+    
+        .hero-text {
+            flex: 1;
+            max-width: 500px;
+        }
+    
+        .tag {
+            display: inline-block;
+            background: #fff;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            border: 1px solid #eee;
+        }
+    
+        .headline {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #000;
+            margin: 0 0 20px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    
+        .headline span {
+            display: block;
+        }
+    
+        .subtext {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+    
+        .price-action {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+    
+        .special-price {
+            font-size: 14px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+    
+        .price {
+            font-size: 32px;
+            font-weight: 800;
+            color: #ff4444;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+    
+        .add-to-cart {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+        }
+    
+        .add-to-cart:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+    
+        .hero-image-wrapper {
+            position: relative;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 500px;
+           
+        }
+    
+        .badge {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            background: #ff6b35;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+            text-align: center;
+            transform: rotate(-15deg);
+            opacity: 0;
+            animation: spinIn 1s ease-out forwards;
+        }
+    
+        .badge-inner {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ff6b35;
+            font-size: 16px;
+        }
+    
+        .badge-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            width: 100%;
+            text-align: center;
+            font-size: 10px;
+            line-height: 1.4;
+            letter-spacing: 1px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+    
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 1s forwards;
+        }
+    
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: left;
+            }
+    
+            .hero-text {
+                max-width: 100%;
+            }
+    
+            .headline {
+                font-size: 36px;
+            }
+    
+            .subtext {
+                font-size: 14px;
+            }
+    
+            .price {
+                font-size: 28px;
+            }
+    
+            .hero-image-wrapper {
+                order: 1;
+                margin-top: 30px;
+            }
+    
+            .badge {
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%) rotate(-15deg);
+            }
+    
+            .hero-image {
+                max-width: 300px;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .headline {
+                font-size: 32px;
+            }
+    
+            .price {
+                font-size: 24px;
+            }
+    
+            .add-to-cart {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+    
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes spinIn {
+            from {
+                opacity: 0;
+                transform: rotate(-15deg) scale(0.8);
+            }
+    
+            to {
+                opacity: 1;
+                transform: rotate(-15deg) scale(1);
+            }
+        }
+
+
+/* ===== CATEGORY CARDS SECTION STYLES ===== */
+
+
+.category-cards-section {
+        background: #fff;
+        padding: 60px 20px;
+        position: relative;
+    }
+
+    .cards-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .category-card {
+        background: #fafafa;
+       
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-image {
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+    }
+
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .category-card:hover .card-image img {
+        transform: scale(1.05);
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .tag {
+        display: inline-block;
+        background: #fff;
+        padding: 4px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        border: 1px solid #eee;
+    }
+
+    .category-card h3 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+        margin: 0 0 12px 0;
+        line-height: 1.3;
+    }
+
+    .category-card p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+
+    .learn-more {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: #000;
+        color: white;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .learn-more:hover {
+        background: #333;
+        transform: scale(1.1);
+    }
+
+    .learn-more i {
+        font-size: 16px;
+    }
+
+    /* ===== RESPONSIVE STYLES ===== */
+    @media (max-width: 768px) {
+        .cards-container {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .category-card {
+            height: auto;
+        }
+
+        .card-image {
+            height: 200px;
+        }
+
+        .category-card h3 {
+            font-size: 20px;
+        }
+
+        .category-card p {
+            font-size: 13px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .category-card h3 {
+            font-size: 18px;
+        }
+
+        .card-image {
+            height: 180px;
+        }
+
+        .learn-more {
+            width: 36px;
+            height: 36px;
+        }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">P</div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-link"> Home</a>
+                <div class="nav-link dropdown" id="categories-toggle">
+                    <i class="fas fa-th"></i> Categories
+                </div>
+                <a href="#" class="nav-link"> Shop</a>
+            </nav>
+
+            <div class="user-actions">
+                <a href="#"><i class="fas fa-user"></i> Login</a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- DESKTOP MEGA MENU -->
+        <div class="mega-menu" id="mega-menu">
+            <div class="sidebar">
+                <div class="sidebar-item" data-category="clothes">
+                    <i class="fas fa-tshirt"></i> Clothes
+                </div>
+                <div class="sidebar-item active" data-category="shoes">
+                    <i class="fas fa-shoe-prints"></i> Shoes
+                </div>
+                <div class="sidebar-item" data-category="bags">
+                    <i class="fas fa-shopping-bag"></i> Bags
+                </div>
+                <div class="sidebar-item" data-category="accessories">
+                    <i class="fas fa-glasses"></i> Accessories
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="column" id="column1"></div>
+                <div class="column" id="column2"></div>
+            </div>
+
+            <div class="promo-image">
+                <div class="promo-text">
+                    <i class="fas fa-tag"></i> Season Sale
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-menu-header">
+                <div class="logo">P</div>
+                <button class="close-btn" id="close-menu">×</button>
+            </div>
+            <ul class="mobile-menu-list">
+                <li class="mobile-menu-item"><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li class="mobile-menu-item" id="mobile-categories">
+                    <span><i class="fas fa-th"></i> Categories</span>
+                    <i class="fas fa-chevron-right"></i>
+                </li>
+                <div class="sub-menu" id="sub-menu">
+                    <div class="sub-menu-item" data-category="clothes">Clothes</div>
+                    <div class="sub-menu-item" data-category="shoes">Shoes</div>
+                    <div class="sub-menu-item" data-category="bags">Bags</div>
+                    <div class="sub-menu-item" data-category="accessories">Accessories</div>
+                </div>
+                <li class="mobile-menu-item"><a href="#"><i class="fas fa-store"></i> Shop</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <!-- Left Text Content -->
+                <div class="hero-text">
+                    <span class="tag">EVERYDAY OFFERS</span>
+                    <h1 class="headline">
+                        <span>Ready.</span>
+                        <span>Set.</span>
+                        <span>Unleash!</span>
+                    </h1>
+                    <p class="subtext">
+                        Discover bold essentials and trend-forward pieces made for everyday confidence.
+                    </p>
+                    <div class="price-action">
+                        <div class="special-price">
+                            <i class="fas fa-chevron-down"></i> SPECIAL PRICE
+                        </div>
+                        <div class="price">UGX 20000</div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                </div>
+        
+                <!-- Right Image & Badge -->
+                <div class="hero-image-wrapper">
+                    
+                    <img src="Images/3phones-removebg-preview.png"
+                        alt="Man celebrating with phone" class="hero-image">
+                       
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+<!-- ===== ELECTRONICS CATEGORY CARDS SECTION ===== -->
+<section class="category-cards-section" id="category-cards">
+    <div class="cards-container">
+        <!-- Card 1: Phones -->
+        <div class="category-card" data-category="phones">
+            <div class="card-image">
+                <img src="Images/phones_on_sale.png"
+                    alt="Smartphone">
+            </div>
+            <div class="card-content">
+                <span class="tag">SMARTPHONES</span>
+                <h3>Power in Your Palm</h3>
+                <p>Latest flagship phones with blazing speed and stunning displays.</p>
+                <a href="#" class="learn-more"><i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Card 2: Laptops -->
+        <div class="category-card" data-category="laptops">
+            <div class="card-image">
+                <img src="Images/DESKTOPS.jpg"
+                    alt="Laptop">
+            </div>
+            <div class="card-content">
+                <span class="tag">LAPTOPS</span>
+                <h3>Work & Play Unleashed</h3>
+                <p>Lightweight, powerful laptops for students, pros, and creatives.</p>
+                <a href="#" class="learn-more"><i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Card 3: Accessories -->
+        <div class="category-card" data-category="accessories">
+            <div class="card-image">
+                <img src="Images/ACCESSORIES.jpg"
+                    alt="Accessories">
+            </div>
+            <div class="card-content">
+                <span class="tag">ACCESSORIES</span>
+                <h3>Essentials for Every Tech</h3>
+                <p>Cables, cases, chargers, headphones — everything you need to power up.</p>
+                <a href="#" class="learn-more"><i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- PRODUCTS DISPLAY SECTION -->
+    <section class="products-section" id="products-section">
+        <h2 id="category-title" style="margin-bottom: 20px; color: #333;">All Products</h2>
+        <div class="products-grid" id="products-grid">
+            <!-- Products loaded by JS -->
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        // ===== SHARED DATA =====
+        const categoryData = {
+            shoes: {
+                title1: "Men's Footwear",
+                items1: ["Running Shoes", "Basketball", "Sneakers", "Sandals", "Slippers", "Formal Shoes"],
+                title2: "Women's Footwear",
+                items2: ["Heels", "Flats", "Boots", "Athletic Shoes", "Espadrilles", "Loafers"]
+            },
+            clothes: {
+                title1: "Men's Clothing",
+                items1: ["T-Shirts", "Shirts", "Jeans", "Jackets", "Suits", "Shorts"],
+                title2: "Women's Clothing",
+                items2: ["Dresses", "Tops", "Skirts", "Jeans", "Blazers", "Loungewear"]
+            },
+            bags: {
+                title1: "Backpacks & Luggage",
+                items1: ["Laptop Backpacks", "Travel Bags", "Duffel Bags", "Suitcases", "Gym Bags"],
+                title2: "Handbags & Wallets",
+                items2: ["Tote Bags", "Clutches", "Crossbody Bags", "Wallets", "Evening Bags"]
+            },
+            accessories: {
+                title1: "Wearable Tech",
+                items1: ["Smartwatches", "Wireless Earbuds", "Fitness Trackers"],
+                title2: "Fashion Accessories",
+                items2: ["Sunglasses", "Hats", "Belts", "Scarves", "Jewelry", "Watches"]
+            }
+        };
+
+        const products = {
+            clothes: [
+                { name: "Cotton T-Shirt", price: "$29.99", img: "https://via.placeholder.com/200?text=T-Shirt" },
+                { name: "Denim Jacket", price: "$79.99", img: "https://via.placeholder.com/200?text=Jacket" },
+                { name: "Summer Dress", price: "$49.99", img: "https://via.placeholder.com/200?text=Dress" },
+                { name: "Formal Shirt", price: "$59.99", img: "https://via.placeholder.com/200?text=Shirt" },
+            ],
+            shoes: [
+                { name: "Running Sneakers", price: "$89.99", img: "https://via.placeholder.com/200?text=Sneakers" },
+                { name: "Leather Loafers", price: "$129.99", img: "https://via.placeholder.com/200?text=Loafers" },
+                { name: "Hiking Boots", price: "$149.99", img: "https://via.placeholder.com/200?text=Boots" },
+                { name: "Flip Flops", price: "$19.99", img: "https://via.placeholder.com/200?text=Flip+Flops" },
+            ],
+            bags: [
+                { name: "Leather Tote Bag", price: "$99.99", img: "https://via.placeholder.com/200?text=Tote+Bag" },
+                { name: "Backpack", price: "$69.99", img: "https://via.placeholder.com/200?text=Backpack" },
+                { name: "Crossbody Purse", price: "$59.99", img: "https://via.placeholder.com/200?text=Purse" },
+                { name: "Weekend Duffel", price: "$89.99", img: "https://via.placeholder.com/200?text=Duffel" },
+            ],
+            accessories: [
+                { name: "Sunglasses", price: "$39.99", img: "https://via.placeholder.com/200?text=Sunglasses" },
+                { name: "Smart Watch", price: "$199.99", img: "https://via.placeholder.com/200?text=Watch" },
+                { name: "Silk Scarf", price: "$29.99", img: "https://via.placeholder.com/200?text=Scarf" },
+                { name: "Leather Belt", price: "$24.99", img: "https://via.placeholder.com/200?text=Belt" },
+            ]
+        };
+
+        // ===== DESKTOP LOGIC =====
+        const categoriesToggle = document.getElementById('categories-toggle');
+        const megaMenu = document.getElementById('mega-menu');
+        const sidebarItems = document.querySelectorAll('.sidebar-item');
+        const col1 = document.getElementById('column1');
+        const col2 = document.getElementById('column2');
+
+        function renderCategoryContent(categoryKey) {
+            const data = categoryData[categoryKey];
+            if (!data) return;
+            col1.innerHTML = `<h4>${data.title1}</h4>` + data.items1.map(item => `<a href="#">${item}</a>`).join('');
+            col2.innerHTML = `<h4>${data.title2}</h4>` + data.items2.map(item => `<a href="#">${item}</a>`).join('');
+        }
+
+        // Initialize desktop
+        renderCategoryContent('shoes');
+
+        categoriesToggle.addEventListener('mouseenter', () => megaMenu.classList.add('active'));
+        categoriesToggle.addEventListener('mouseleave', () => setTimeout(() => {
+            if (!megaMenu.matches(':hover')) megaMenu.classList.remove('active');
+        }, 250));
+        megaMenu.addEventListener('mouseenter', () => megaMenu.classList.add('active'));
+        megaMenu.addEventListener('mouseleave', () => megaMenu.classList.remove('active'));
+
+        sidebarItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                sidebarItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                renderCategoryContent(item.dataset.category);
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-menu') && !e.target.closest('.mega-menu')) {
+                megaMenu.classList.remove('active');
+            }
+        });
+
+        // ===== MOBILE LOGIC =====
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileCategories = document.getElementById('mobile-categories');
+        const subMenu = document.getElementById('sub-menu');
+        const subMenuItems = document.querySelectorAll('.sub-menu-item');
+        const productsGrid = document.getElementById('products-grid');
+        const categoryTitle = document.getElementById('category-title');
+
+        mobileToggle.addEventListener('click', () => mobileMenu.classList.add('active'));
+        closeMenu.addEventListener('click', () => mobileMenu.classList.remove('active'));
+
+        mobileCategories.addEventListener('click', () => {
+            subMenu.classList.toggle('active');
+        });
+
+        subMenuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const cat = item.dataset.category;
+                renderProducts(cat);
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        function renderProducts(category) {
+            const items = products[category] || [];
+            categoryTitle.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)} Products`;
+            productsGrid.innerHTML = items.map(p => `
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('${p.img}')"></div>
+          <div class="product-info">
+            <div class="product-title">${p.name}</div>
+            <div class="product-price">${p.price}</div>
+          </div>
+        </div>
+      `).join('');
+        }
+
+
+
+
+
+        // Optional: Trigger animations on scroll (if you want it to animate when scrolled into view)
+            document.addEventListener('DOMContentLoaded', function () {
+                const heroSection = document.getElementById('hero');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                observer.observe(heroSection);
+            });
+
+
+
+            // Optional: Animate cards as they scroll into view
+                document.addEventListener('DOMContentLoaded', function () {
+                    const cards = document.querySelectorAll('.category-card');
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                            }
+                        });
+                    }, { threshold: 0.1 });
+
+                    cards.forEach(card => observer.observe(card));
+                });
+
+
+        
+    </script>
+
+</body>
+
+</html>
