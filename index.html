@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Header with Mega Menu & Mobile Filter</title>
+    <title>GeekTechnologies</title>
 
     <!-- Poppins Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -12,7 +12,7 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
+    <link rel="stylesheet" href="style.css">
     <style>
         * {
             margin: 0;
@@ -769,6 +769,488 @@
         }
     }
 
+
+    /*FEATURED PRODUCTS*/
+     /* ===== SECTION ANIMATION ===== */
+        .featured-products {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .featured-products.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== HEADER ===== */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-header h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            font-style: italic;
+            margin-left: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .view-all {
+            font-weight: 600;
+            text-decoration: none;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .view-all:hover {
+            text-decoration: underline;
+        }
+
+        .view-all::before {
+            content: "→";
+            font-size: 0.9rem;
+        }
+
+        /* ===== PRODUCT GRID ===== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: #fafafa;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== SALE BADGE ===== */
+        .sale-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgb(221, 33, 133);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 3px;
+            z-index: 2;
+        }
+
+        /* ===== SHOE IMAGE CONTAINER ===== */
+        .shoe-image-container {
+            width: 100%;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8;
+            overflow: hidden;
+        }
+
+        .shoe-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .shoe-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== PRODUCT INFO ===== */
+        .product-info {
+            padding: 15px;
+        }
+
+        .category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-right: 8px;
+        }
+
+        .discounted-price {
+            color: #000;
+        }
+
+        /* ===== SIZE SELECTOR ===== */
+        .size-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .size-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .size-btn:hover {
+            background: #eee;
+            border-color: #bbb;
+        }
+
+        .size-btn.selected {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .section-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .shoe-image-container {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .size-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 0.85rem;
+            }
+        }
+
+/* ===== BANNER SECTION STYLES ===== */
+        /* ===== MAIN BANNER CONTAINER ===== */
+        .banner-container {
+            display: flex;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            position: relative;
+            margin-top: 120px;
+        }
+
+        /* ===== IMAGE BOXES ===== */
+        .banner-item {
+            position: relative;
+            flex: 1;
+            height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        
+
+        .banner-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* ===== TEXT OVERLAYS ===== */
+        .text-overlay {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            color: white;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .sub-text {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== SHOP NOW BUTTONS ===== */
+        .shop-now-btn {
+            background: white;
+            color: black;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .shop-now-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ===== RESPONSIVE MOBILE LAYOUT ===== */
+        @media (max-width: 768px) {
+            .banner-container {
+                flex-direction: column;
+            }
+
+            .banner-item {
+                height: 300px;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .text-overlay {
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+            }
+
+            .shop-now-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-item {
+                height: 250px;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .sub-text {
+                font-size: 0.9rem;
+            }
+        }
+        /* ===== ENTRANCE ANIMATION ===== */
+.banner-item {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.banner-item.left-enter {
+  transform: translateX(-100px);
+}
+
+.banner-item.right-enter {
+  transform: translateX(100px);
+}
+
+.banner-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+
+
+
+/*CATERGORIES*/
+.categories-section {
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.categories-section h2 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Navigation Arrows */
+.carousel-nav {
+  position: absolute;
+  top: 0;
+  right: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.nav-btn {
+  background: white;
+  border: 2px solid #000;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.nav-btn:hover {
+  background: #ff6b35;
+  border-color: #fff;
+}
+
+.nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #eee;
+  border-color: #ddd;
+}
+
+/* Carousel Container */
+.carousel-container {
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+  padding: 1rem 0;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.carousel-wrapper {
+  display: flex;
+  gap: 1.8rem;
+  transition: transform 0.4s ease-out;
+}
+
+.category-card {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-decoration: none;
+  color: white;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.02);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(90%);
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card-overlay h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #fff;
+}
+
+
+/* Mobile: 1 card visible */
+@media (max-width: 767px) {
+  .category-card {
+    width: 320px;
+    height: 350px;
+  }
+  .carousel-wrapper {
+    padding: 0 .7rem;
+  }
+}
+
+/* Tablet: 2 cards visible */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .category-card {
+    width: 350px;
+    height: 400px;
+  }
+  .carousel-wrapper {
+    padding: 0 2rem;
+  }
+}
+
+/* Desktop: 3 cards visible */
+@media (min-width: 1024px) {
+  .category-card {
+    width: 380px;
+    height: 450px;
+  }
+}
+
+
     </style>
 </head>
 
@@ -779,20 +1261,14 @@
             <div class="logo">P</div>
 
             <nav class="nav-menu">
-                <a href="#" class="nav-link"> Home</a>
+                <a href="index.html" class="nav-link"> Home</a>
                 <div class="nav-link dropdown" id="categories-toggle">
-                    <i class="fas fa-th"></i> Categories
+                     Categories<i class="fa-solid fa-chevron-down"></i>
                 </div>
-                <a href="#" class="nav-link"> Shop</a>
+                <a href="shop.html" class="nav-link">Shop</a>
             </nav>
 
-            <div class="user-actions">
-                <a href="#"><i class="fas fa-user"></i> Login</a>
-                <a href="#" class="cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
+          
 
             <!-- Mobile Toggle -->
             <button class="mobile-toggle" id="mobile-toggle">
@@ -836,7 +1312,7 @@
                 <button class="close-btn" id="close-menu">×</button>
             </div>
             <ul class="mobile-menu-list">
-                <li class="mobile-menu-item"><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li class="mobile-menu-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li class="mobile-menu-item" id="mobile-categories">
                     <span><i class="fas fa-th"></i> Categories</span>
                     <i class="fas fa-chevron-right"></i>
@@ -847,7 +1323,7 @@
                     <div class="sub-menu-item" data-category="bags">Bags</div>
                     <div class="sub-menu-item" data-category="accessories">Accessories</div>
                 </div>
-                <li class="mobile-menu-item"><a href="#"><i class="fas fa-store"></i> Shop</a></li>
+                <li class="mobile-menu-item"><a href="shop.html"><i class="fas fa-store"></i>Shop</a></li>
             </ul>
         </div>
     </header>
@@ -873,7 +1349,7 @@
                             <i class="fas fa-chevron-down"></i> SPECIAL PRICE
                         </div>
                         <div class="price">UGX 20000</div>
-                        <button class="add-to-cart">ADD TO CART</button>
+                        <button class="add-to-cart">CALL US</button>
                     </div>
                 </div>
         
@@ -892,7 +1368,7 @@
 
 
 <!-- ===== ELECTRONICS CATEGORY CARDS SECTION ===== -->
-<section class="category-cards-section" id="category-cards">
+<section class="category-cards-section animate-on-scroll " id="category-cards" data-animation="fade-up">
     <div class="cards-container">
         <!-- Card 1: Phones -->
         <div class="category-card" data-category="phones">
@@ -938,6 +1414,199 @@
     </div>
 </section>
 
+<!--FEATURE PRODUCTS-->
+<section class="featured-products animate-on-scroll" data-animation="slide-in-left">
+    <div class="section-header">
+        <h1>Featured products</h1>
+        <a href="shop.html" class="view-all">VIEW ALL</a>
+    </div>
+
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card" data-product="sports">
+            <div class="sale-badge">SALE!</div>
+            <div class="shoe-image-container">
+                <img src="Images/ACCESSORIES.jpg" alt="Super Comfort v2" class="shoe-image" id="sports-img">
+            </div>
+            <div class="product-info">
+                <div class="category">SPORTS</div>
+                <div class="product-title">Super Comfort v2</div>
+                <div class="price">
+                    <span class="original-price">UGX 35,000</span>
+                    <span class="discounted-price">UGX 30,000</span>
+                </div>
+                <div class="size-selector">
+                    <button class="size-btn selected" data-size="39" data-img="Images/ACCESSORIES.jpg">39</button>
+                    <button class="size-btn" data-size="40" data-img="Images/phones.jpg">40</button>
+                    <button class="size-btn" data-size="41" data-img="Images/ACCESSORIES.jpg">41</button>
+                    <button class="size-btn" data-size="42" data-img="Images/phones.jpg">42</button>
+                    <button class="size-btn" data-size="43" data-img="Images/ACCESSORIES.jpg">43</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card" data-product="kids">
+            <div class="sale-badge">SALE!</div>
+            <div class="shoe-image-container">
+                <img src="Images/IMG-20251018-WA0002.jpg" alt="Super Classic XII"
+                    class="shoe-image" id="kids-img">
+            </div>
+            <div class="product-info">
+                <div class="category">KIDS</div>
+                <div class="product-title">Super Classic XII</div>
+                <div class="price">
+                    <span class="original-price">UGX 25,000</span>
+                    <span class="discounted-price">UGX 22,000</span>
+                </div>
+                <div class="size-selector">
+                    <button class="size-btn selected" data-size="39"data-img="Images/IMG-20251018-WA0045.jpg">39</button>
+                    <button class="size-btn" data-size="40"data-img="Images/IMG-20251018-WA0044.jpg">40</button>
+                    <button class="size-btn" data-size="41"data-img="Images/IMG-20251018-WA0043.jpg">41</button>
+                    <button class="size-btn" data-size="42"data-img="Images/IMG-20251018-WA0042.jpg">42</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card" data-product="mens">
+            <div class="sale-badge">SALE!</div>
+            <div class="shoe-image-container">
+                <img src="Images/IMG-20251018-WA0041.jpg" alt="Easy Rider Vingate"
+                    class="shoe-image" id="mens-img">
+            </div>
+            <div class="product-info">
+                <div class="category">MENS</div>
+                <div class="product-title">Easy Rider Vingate</div>
+                <div class="price">
+                    <span class="original-price">UGX 45,000</span>
+                    <span class="discounted-price">UGX 41,000</span>
+                </div>
+                <div class="size-selector">
+                    <button class="size-btn selected" data-size="39"data-img="Images/IMG-20251018-WA0040.jpg">39</button>
+                    <button class="size-btn" data-size="40"data-img="Images/IMG-20251018-WA0038.jpg">40</button>
+                    <button class="size-btn" data-size="41"data-img="Images/IMG-20251018-WA0039.jpg">41</button>
+                    <button class="size-btn" data-size="42"data-img="Images/IMG-20251018-WA0037.jpg">42</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card" data-product="womens">
+            <div class="sale-badge">SALE!</div>
+            <div class="shoe-image-container">
+                <img src="Images/IMG-20251018-WA0036.jpg" alt="Sketcher Shine"
+                    class="shoe-image" id="womens-img">
+            </div>
+            <div class="product-info">
+                <div class="category">WOMENS</div>
+                <div class="product-title">Sketcher Shine</div>
+                <div class="price">
+                    <span class="original-price">UGX 50,000</span>
+                    <span class="discounted-price">UGX 48,000</span>
+                </div>
+                <div class="size-selector">
+                    <button class="size-btn selected" data-size="39"data-img="Images/IMG-20251018-WA0036.jpg">39</button>
+                    <button class="size-btn" data-size="40"data-img="Images/IMG-20251018-WA0035.jpg">40</button>
+                    <button class="size-btn" data-size="41"data-img="Images/IMG-20251018-WA0034.jpg">41</button>
+                    <button class="size-btn" data-size="42"data-img="Images/IMG-20251018-WA0033.jpg">42</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--IMAGE BANNER-->
+<section class="banner-container">
+
+    <!-- LEFT BANNER: URBAN SHOE -->
+    <div class="banner-item">
+        <img src="Images/urban.jpg" alt="Urban Shoe">
+        <div class="text-overlay">
+            <h2 class="main-title">URBAN</h2>
+            <p class="sub-text">Lightweight & breathable design</p>
+            <a href="tel:+256777891441" class="shop-now-btn">SHOP NOW</a>
+        </div>
+    </div>
+
+    <!-- RIGHT BANNER: TRANSITION BOOTS -->
+    <div class="banner-item">
+        <img src="Images/sectionShoe.png" alt="Leather Boots">
+        <div class="text-overlay">
+            <h2 class="main-title">SNEAKERS</h2>
+            <p class="sub-text">Made with originality </p>
+            <a href="tel:+256777891441" class="shop-now-btn">SHOP NOW</a>
+        </div>
+    </div>
+
+</section>
+
+
+<!--CATERGORIES SECTION-->
+<section class="categories-section animate-on-scroll"data-animation="fade-up" >
+    <h2>Categories</h2>
+
+    <!-- Navigation Arrows -->
+    <div class="carousel-nav">
+        <button class="nav-btn prev" aria-label="Previous category">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M15 18l-6-6 6-6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
+        <button class="nav-btn next" aria-label="Next category">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M9 6l6 6-6 6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Carousel Container -->
+    <div class="carousel-container">
+        <div class="carousel-wrapper">
+
+            <!-- Card 1 -->
+            <a href="/shop/womens" class="category-card">
+                <img src="Images/IMG-20251018-WA0002.jpg" alt="Shop Womens" />
+                <div class="card-overlay">
+                    <h3>Shop Womens</h3>
+                </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="/shop/mens" class="category-card">
+                <img src="Images/IMG-20251018-WA0006.jpg" alt="Shop Mens" />
+                <div class="card-overlay">
+                    <h3>Shop Mens</h3>
+                </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="/shop/sports" class="category-card">
+                <img src="Images/IMG-20251018-WA0003.jpg" alt="Shop Sports" />
+                <div class="card-overlay">
+                    <h3>Kids</h3>
+                </div>
+            </a>
+            <!-- Card 4 -->
+            <a href="/shop/sports" class="category-card">
+                <img src="Images/IMG-20251018-WA0022.jpg" alt="Shop Sports" />
+                <div class="card-overlay">
+                    <h3>Gyms</h3>
+                </div>
+            </a>
+            <!-- Card 5 -->
+            <a href="/shop/sports" class="category-card">
+                <img src="Images/IMG-20251018-WA0018.jpg" alt="Shop Sports" />
+                <div class="card-overlay">
+                    <h3>Smart Watches</h3>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
 
 
     <!-- PRODUCTS DISPLAY SECTION -->
@@ -958,7 +1627,7 @@
 
 
 
-
+<script src="script.js"></script>
     <script>
         // ===== SHARED DATA =====
         const categoryData = {
@@ -990,10 +1659,10 @@
 
         const products = {
             clothes: [
-                { name: "Cotton T-Shirt", price: "$29.99", img: "https://via.placeholder.com/200?text=T-Shirt" },
-                { name: "Denim Jacket", price: "$79.99", img: "https://via.placeholder.com/200?text=Jacket" },
-                { name: "Summer Dress", price: "$49.99", img: "https://via.placeholder.com/200?text=Dress" },
-                { name: "Formal Shirt", price: "$59.99", img: "https://via.placeholder.com/200?text=Shirt" },
+                { name: "Cotton T-Shirt", price: "UGX 20000", img: "https://via.placeholder.com/200?text=T-Shirt" },
+                { name: "Denim Jacket", price: "UGX 25000", img: "https://via.placeholder.com/200?text=Jacket" },
+                { name: "Summer Dress", price: "UGX 15000", img: "https://via.placeholder.com/200?text=Dress" },
+                { name: "Formal Shirt", price: "UGX 10000", img: "https://via.placeholder.com/200?text=Shirt" },
             ],
             shoes: [
                 { name: "Running Sneakers", price: "$89.99", img: "https://via.placeholder.com/200?text=Sneakers" },
@@ -1129,7 +1798,107 @@
                 });
 
 
-        
+        // ===== ANIMATE SECTION ON LOAD =====
+            document.addEventListener('DOMContentLoaded', () => {
+                const featuredSection = document.querySelector('.featured-products');
+                setTimeout(() => {
+                    featuredSection.classList.add('visible');
+                }, 300); // Delay for smoother page load
+            });
+
+            // ===== HANDLE SIZE SELECTION =====
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const productCard = this.closest('.product-card');
+                    const imgElement = productCard.querySelector('.shoe-image');
+                    const newImgSrc = this.getAttribute('data-img');
+
+                    // Update image
+                    imgElement.src = newImgSrc;
+
+                    // Update selected state
+                    productCard.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+
+            //BANNER ANIMATION
+            // Animate banners on page load
+                document.addEventListener('DOMContentLoaded', () => {
+                    const bannerItems = document.querySelectorAll('.banner-item');
+
+                    bannerItems.forEach((item, index) => {
+                        if (index === 0) {
+                            item.classList.add('left-enter');
+                        } else if (index === 1) {
+                            item.classList.add('right-enter');
+                        }
+
+                        // Trigger animation after a small delay for staggered effect
+                        setTimeout(() => {
+                            item.classList.add('visible');
+                        }, 300 + (index * 100)); // Stagger by 100ms per item
+                    });
+                });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+            const wrapper = document.querySelector('.carousel-wrapper');
+            const cards = document.querySelectorAll('.category-card');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+
+            let currentIndex = 0;
+            let cardWidth = 0;
+            let gap = 16; // 1rem in px
+
+            function updateCardWidth() {
+                // Get computed width of first card + gap
+                const firstCard = cards[0];
+                const style = window.getComputedStyle(firstCard);
+                const margin = parseInt(style.marginRight) || 0;
+                cardWidth = firstCard.offsetWidth + gap + margin;
+            }
+
+            function updateButtons() {
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex >= cards.length - Math.floor(wrapper.offsetWidth / cardWidth);
+            }
+
+            function scrollToIndex(index) {
+                if (index < 0 || index > cards.length - 1) return;
+
+                currentIndex = index;
+                const offset = -index * cardWidth;
+                wrapper.style.transform = `translateX(${offset}px)`;
+                updateButtons();
+            }
+
+            // Initialize
+            updateCardWidth();
+            updateButtons();
+
+            // Resize handler
+            window.addEventListener('resize', () => {
+                updateCardWidth();
+                updateButtons();
+                scrollToIndex(currentIndex); // Realign if needed
+            });
+
+            // Button handlers
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    scrollToIndex(currentIndex - 1);
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < cards.length - 1) {
+                    scrollToIndex(currentIndex + 1);
+                }
+            });
+        });
     </script>
 
 </body>

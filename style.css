@@ -1,0 +1,32 @@
+        /* Hide elements initially */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            /* Default: slide up */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* When visible, animate in */
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Optional: override per animation type */
+        .animate-on-scroll[data-animation="slide-left"].visible {
+            transform: translateX(0);
+        }
+
+        .animate-on-scroll[data-animation="slide-left"] {
+            transform: translateX(-50px);
+        }
+
+        .animate-on-scroll[data-animation="zoom-in"].visible {
+            transform: scale(1);
+        }
+
+        .animate-on-scroll[data-animation="zoom-in"] {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        
