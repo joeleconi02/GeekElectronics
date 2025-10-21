@@ -363,257 +363,6 @@
 
 
 
-/* ===== HERO SECTION STYLES ===== */
-         .hero-section {
-            background: #F7F2EA;
-            padding: 60px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-    
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-    
-        .hero-text {
-            flex: 1;
-            max-width: 500px;
-        }
-    
-        .tag {
-            display: inline-block;
-            background: #fff;
-            padding: 4px 12px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            border: 1px solid #eee;
-        }
-    
-        .headline {
-            font-size: 48px;
-            font-weight: 800;
-            line-height: 1.1;
-            color: #000;
-            margin: 0 0 20px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-    
-        .headline span {
-            display: block;
-        }
-    
-        .subtext {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 24px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease 0.2s forwards;
-        }
-    
-        .price-action {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-    
-        .special-price {
-            font-size: 14px;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease 0.4s forwards;
-        }
-    
-        .price {
-            font-size: 32px;
-            font-weight: 800;
-            color: #ff4444;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease 0.6s forwards;
-        }
-    
-        .add-to-cart {
-            background: #000;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease 0.8s forwards;
-        }
-    
-        .add-to-cart:hover {
-            background: #333;
-            transform: scale(1.05);
-        }
-    
-        .hero-image-wrapper {
-            position: relative;
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-width: 500px;
-           
-        }
-    
-        .badge {
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            width: 100px;
-            height: 100px;
-            background: #ff6b35;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: 600;
-            font-size: 12px;
-            text-align: center;
-            transform: rotate(-15deg);
-            opacity: 0;
-            animation: spinIn 1s ease-out forwards;
-        }
-    
-        .badge-inner {
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ff6b35;
-            font-size: 16px;
-        }
-    
-        .badge-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(0deg);
-            width: 100%;
-            text-align: center;
-            font-size: 10px;
-            line-height: 1.4;
-            letter-spacing: 1px;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-        }
-    
-        .hero-image {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            object-fit: cover;
-            z-index: 1;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease 1s forwards;
-        }
-    
-        /* ===== RESPONSIVE STYLES ===== */
-        @media (max-width: 768px) {
-            .hero-container {
-                flex-direction: column;
-                text-align: left;
-            }
-    
-            .hero-text {
-                max-width: 100%;
-            }
-    
-            .headline {
-                font-size: 36px;
-            }
-    
-            .subtext {
-                font-size: 14px;
-            }
-    
-            .price {
-                font-size: 28px;
-            }
-    
-            .hero-image-wrapper {
-                order: 1;
-                margin-top: 30px;
-            }
-    
-            .badge {
-                top: 10px;
-                left: 50%;
-                transform: translateX(-50%) rotate(-15deg);
-            }
-    
-            .hero-image {
-                max-width: 300px;
-            }
-        }
-    
-        @media (max-width: 480px) {
-            .headline {
-                font-size: 32px;
-            }
-    
-            .price {
-                font-size: 24px;
-            }
-    
-            .add-to-cart {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-        }
-    
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-    
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    
-        @keyframes spinIn {
-            from {
-                opacity: 0;
-                transform: rotate(-15deg) scale(0.8);
-            }
-    
-            to {
-                opacity: 1;
-                transform: rotate(-15deg) scale(1);
-            }
-        }
-
-
 /* ===== CATEGORY CARDS SECTION STYLES ===== */
 
 
@@ -627,8 +376,8 @@
         max-width: 1200px;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
     }
 
     .category-card {
@@ -717,6 +466,11 @@
         font-size: 16px;
     }
 
+
+
+
+
+
     /* ===== RESPONSIVE STYLES ===== */
     @media (max-width: 768px) {
         .cards-container {
@@ -754,6 +508,12 @@
             width: 36px;
             height: 36px;
         }
+        .card-image img {
+        width: 100%;
+        height: 150px;
+        object-fit: contain;
+        transition: transform 0.5s ease;
+    }
     }
 
     /* ===== ANIMATIONS ===== */
@@ -769,6 +529,34 @@
         }
     }
 
+        /* ===== TABLET VIEW (2 COLUMNS) ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .card-image {
+        height: 300px; /* Increased for better visual balance on tablets */
+    }
+
+    .card-image img {
+        object-fit: contain; /* Keep cover for consistent cropping */
+    }
+
+    .category-card h3 {
+        font-size: 22px;
+    }
+
+    .category-card p {
+        font-size: 14px;
+    }
+
+    .learn-more {
+        width: 38px;
+        height: 38px;
+    }
+}
 
     /*FEATURED PRODUCTS*/
      /* ===== SECTION ANIMATION ===== */
@@ -999,7 +787,7 @@
         .banner-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center;
         }
 
@@ -1117,6 +905,7 @@
 .categories-section {
   padding: 4rem 2rem;
   position: relative;
+  
 }
 
 .categories-section h2 {
@@ -1175,7 +964,7 @@
 
 .carousel-wrapper {
   display: flex;
-  gap: 1.8rem;
+  gap: 2rem;
   transition: transform 0.4s ease-out;
 }
 
@@ -1223,11 +1012,11 @@
 /* Mobile: 1 card visible */
 @media (max-width: 767px) {
   .category-cards {
-    width: 320px;
-    height: 350px;
+    width: 370px;
+    height: 370px;
   }
   .carousel-wrapper {
-    padding: 0 .7rem;
+    padding: 0 1rem;
   }
 }
 
@@ -1238,8 +1027,13 @@
     height: 400px;
   }
   .carousel-wrapper {
-    padding: 0 2rem;
+    padding: 0 1rem;
   }
+  .carousel-wrapper {
+    gap: 1rem;
+}
+
+
 }
 
 /* Desktop: 3 cards visible */
@@ -1251,6 +1045,20 @@
 }
 
 
+.carousel-wrapper {
+  display: flex;
+  gap: 2rem; /* This is used in JS via getComputedStyle */
+  padding: 1rem 0;
+  transition: transform 0.6s ease-in-out; /* Smooth slide */
+}
+
+.category-cards {
+  flex-shrink: 0;
+  width: 350px; /* Your existing fixed width is okay */
+  height: 350px;
+  /* No extra margin needed if using gap */
+}
+
     </style>
 </head>
 
@@ -1258,7 +1066,7 @@
 
     <header class="header">
         <div class="nav-container">
-            <div class="logo">P</div>
+            <div class="logo"><img src="Images/Log.png" alt="" width="70px" height="60px"></div>
 
             <nav class="nav-menu">
                 <a href="index.html" class="nav-link"> Home</a>
@@ -1308,7 +1116,7 @@
         <!-- MOBILE MENU -->
         <div class="mobile-menu" id="mobile-menu">
             <div class="mobile-menu-header">
-                <div class="logo">P</div>
+                <div class="logo"><img src="Images/Log.png" alt="" width="70px" height="60px"></div>
                 <button class="close-btn" id="close-menu">×</button>
             </div>
             <ul class="mobile-menu-list">
@@ -1354,15 +1162,30 @@
                 </div>
         
                 <!-- Right Image & Badge -->
+                
                 <div class="hero-image-wrapper">
+                    <div class="image-slider">
+                        <img src="Images/3phones-removebg-preview.png" alt="Image1" class="hero-image active">
+                        <img src="Images/WhitePinkSneakers.png" alt="Image2" class="hero-image">
+                        <img src="Images/image.png" alt="Image3" class="hero-image">
+                        <img src="Images/BlackShirt.png" alt="Image4" class="hero-image">
+                        <img src="Images/GreenShirt.png" alt="Image5" class="hero-image">
+                    </div>
+                </div>
+
                     
-                    <img src="Images/3phones-removebg-preview.png"
-                        alt="Man celebrating with phone" class="hero-image">
                        
                 </div>
             </div>
         </section>
 
+<!-- PRODUCTS DISPLAY SECTION -->
+<section class="products-section" id="products-section">
+    <h2 id="category-title" style="margin-bottom: 20px; color: #333;">All Products</h2>
+    <div class="products-grid" id="products-grid">
+        <!-- Products loaded by JS -->
+    </div>
+</section>
 
 
 
@@ -1370,44 +1193,54 @@
 <!-- ===== ELECTRONICS CATEGORY CARDS SECTION ===== -->
 <section class="category-cards-section animate-on-scroll" id="category-cards" data-animation="fade-up">
     <div class="cards-container">
-        <!-- Card 1: Phones -->
-        <div class="category-card" data-category="phones">
+        <!-- Card 1: Shoes -->
+        <div class="category-card" data-category="shoes">
             <div class="card-image">
-                <img src="Images/phones_on_sale.png"
-                    alt="Smartphone">
+                <img src="Images/WhitePinkSneakers.png" alt="Shoes">
             </div>
             <div class="card-content">
-                <span class="tag">SMARTPHONES</span>
-                <h3>Power in Your Palm</h3>
-                <p>Latest flagship phones with blazing speed and stunning displays.</p>
+                <span class="tag">SHOES</span>
+                <h3>Step in Style</h3>
+                <p>Trendy, comfortable, and durable footwear for every occasion.</p>
                 <a href="#" class="learn-more"><i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
 
-        <!-- Card 2: Laptops -->
-        <div class="category-card" data-category="laptops">
+        <!-- Card 2: Clothes -->
+        <div class="category-card" data-category="clothes">
             <div class="card-image">
-                <img src="Images/DESKTOPS.jpg"
-                    alt="Laptop">
+                <img src="Images/Red-Jacket.png" alt="Clothes">
             </div>
             <div class="card-content">
-                <span class="tag">LAPTOPS</span>
-                <h3>Work & Play Unleashed</h3>
-                <p>Lightweight, powerful laptops for students, pros, and creatives.</p>
+                <span class="tag">CLOTHES</span>
+                <h3>Fashion That Fits</h3>
+                <p>From casual to formal — quality apparel for men, women, and kids.</p>
                 <a href="#" class="learn-more"><i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
 
-        <!-- Card 3: Accessories -->
+        <!-- Card 3: Electronics -->
+        <div class="category-card" data-category="electronics">
+            <div class="card-image">
+                <img src="Images/iphones3-removebg-preview.png" alt="Electronics">
+            </div>
+            <div class="card-content">
+                <span class="tag">ELECTRONICS</span>
+                <h3>Smart Tech, Smarter Life</h3>
+                <p>Phones, laptops, and gadgets to keep you connected and productive.</p>
+                <a href="#" class="learn-more"><i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Card 4: Accessories (Fashion/Tech Hybrid) -->
         <div class="category-card" data-category="accessories">
             <div class="card-image">
-                <img src="Images/ACCESSORIES.jpg"
-                    alt="Accessories">
+                <img src="Images/Digitalwatch.png" alt="Accessories">
             </div>
             <div class="card-content">
                 <span class="tag">ACCESSORIES</span>
-                <h3>Essentials for Every Tech</h3>
-                <p>Cables, cases, chargers, headphones — everything you need to power up.</p>
+                <h3>Complete Your Look</h3>
+                <p>Bags, watches, headphones, and more — style meets function.</p>
                 <a href="#" class="learn-more"><i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
@@ -1426,7 +1259,7 @@
         <div class="product-card" data-product="sports">
             <div class="sale-badge">SALE!</div>
             <div class="shoe-image-container">
-                <img src="Images/ACCESSORIES.jpg" alt="Super Comfort v2" class="shoe-image" id="sports-img">
+                <img src="Images/MenBlackShoe4.png" alt="Super Comfort v2" class="shoe-image" id="sports-img">
             </div>
             <div class="product-info">
                 <div class="category">SPORTS</div>
@@ -1436,11 +1269,11 @@
                     <span class="discounted-price">UGX 30,000</span>
                 </div>
                 <div class="size-selector">
-                    <button class="size-btn selected" data-size="39" data-img="Images/ACCESSORIES.jpg">39</button>
-                    <button class="size-btn" data-size="40" data-img="Images/phones.jpg">40</button>
-                    <button class="size-btn" data-size="41" data-img="Images/ACCESSORIES.jpg">41</button>
-                    <button class="size-btn" data-size="42" data-img="Images/phones.jpg">42</button>
-                    <button class="size-btn" data-size="43" data-img="Images/ACCESSORIES.jpg">43</button>
+                    <button class="size-btn selected" data-size="39" data-img="Images/MenBlackShoe4.png">39</button>
+                    <button class="size-btn" data-size="40" data-img="Images/MenBlackShoe6.png">40</button>
+                    <button class="size-btn" data-size="41" data-img="Images/MenShoeWhite.png">41</button>
+                    <button class="size-btn" data-size="42" data-img="Images/MensWhiteShoe3.png">42</button>
+                    
                 </div>
             </div>
         </div>
@@ -1449,7 +1282,7 @@
         <div class="product-card" data-product="kids">
             <div class="sale-badge">SALE!</div>
             <div class="shoe-image-container">
-                <img src="Images/IMG-20251018-WA0002.jpg" alt="Super Classic XII"
+                <img src="Images/KidsShoe.jpg" alt="Super Classic XII"
                     class="shoe-image" id="kids-img">
             </div>
             <div class="product-info">
@@ -1460,10 +1293,10 @@
                     <span class="discounted-price">UGX 22,000</span>
                 </div>
                 <div class="size-selector">
-                    <button class="size-btn selected" data-size="39"data-img="Images/IMG-20251018-WA0045.jpg">39</button>
-                    <button class="size-btn" data-size="40"data-img="Images/IMG-20251018-WA0044.jpg">40</button>
-                    <button class="size-btn" data-size="41"data-img="Images/IMG-20251018-WA0043.jpg">41</button>
-                    <button class="size-btn" data-size="42"data-img="Images/IMG-20251018-WA0042.jpg">42</button>
+                    <button class="size-btn selected" data-size="39"data-img="Images/LadiesShoe.png">39</button>
+                    <button class="size-btn" data-size="40"data-img="Images/LadiesShoeWithH.png">40</button>
+                    <button class="size-btn" data-size="41"data-img="Images/KidGreenShoe.png">41</button>
+                    <button class="size-btn" data-size="42"data-img="Images/WhitePinkSneakers.png">42</button>
                 </div>
             </div>
         </div>
@@ -1472,7 +1305,7 @@
         <div class="product-card" data-product="mens">
             <div class="sale-badge">SALE!</div>
             <div class="shoe-image-container">
-                <img src="Images/IMG-20251018-WA0041.jpg" alt="Easy Rider Vingate"
+                <img src="Images/YellowAirForce.png" alt="Easy Rider Vingate"
                     class="shoe-image" id="mens-img">
             </div>
             <div class="product-info">
@@ -1483,10 +1316,10 @@
                     <span class="discounted-price">UGX 41,000</span>
                 </div>
                 <div class="size-selector">
-                    <button class="size-btn selected" data-size="39"data-img="Images/IMG-20251018-WA0040.jpg">39</button>
-                    <button class="size-btn" data-size="40"data-img="Images/IMG-20251018-WA0038.jpg">40</button>
-                    <button class="size-btn" data-size="41"data-img="Images/IMG-20251018-WA0039.jpg">41</button>
-                    <button class="size-btn" data-size="42"data-img="Images/IMG-20251018-WA0037.jpg">42</button>
+                    <button class="size-btn selected" data-size="39"data-img="Images/YellowAirForce.png">39</button>
+                    <button class="size-btn" data-size="40"data-img="Images/BlackJordan.png">40</button>
+                    <button class="size-btn" data-size="41"data-img="Images/BlueYellowMensJordan.png">41</button>
+                    <button class="size-btn" data-size="42"data-img="Images/MensWhiteShoe.png">42</button>
                 </div>
             </div>
         </div>
@@ -1495,7 +1328,7 @@
         <div class="product-card" data-product="womens">
             <div class="sale-badge">SALE!</div>
             <div class="shoe-image-container">
-                <img src="Images/IMG-20251018-WA0036.jpg" alt="Sketcher Shine"
+                <img src="Images/womenshow.jpg" alt="Sketcher Shine"
                     class="shoe-image" id="womens-img">
             </div>
             <div class="product-info">
@@ -1506,10 +1339,10 @@
                     <span class="discounted-price">UGX 48,000</span>
                 </div>
                 <div class="size-selector">
-                    <button class="size-btn selected" data-size="39"data-img="Images/IMG-20251018-WA0036.jpg">39</button>
-                    <button class="size-btn" data-size="40"data-img="Images/IMG-20251018-WA0035.jpg">40</button>
-                    <button class="size-btn" data-size="41"data-img="Images/IMG-20251018-WA0034.jpg">41</button>
-                    <button class="size-btn" data-size="42"data-img="Images/IMG-20251018-WA0033.jpg">42</button>
+                    <button class="size-btn selected" data-size="39"data-img="Images/womenAirForce-removebg-preview.png">39</button>
+                    <button class="size-btn" data-size="40"data-img="Images/Gray-N.png">40</button>
+                    <button class="size-btn" data-size="41"data-img="Images/GreenAirForce.png">41</button>
+                    <button class="size-btn" data-size="42"data-img="Images/WomenSHOE3-removebg-preview.png">42</button>
                 </div>
             </div>
         </div>
@@ -1567,7 +1400,7 @@
 
             <!-- Card 1 -->
             <a href="/shop/womens" class="category-cards">
-                <img src="Images/IMG-20251018-WA0002.jpg" alt="Shop Womens" />
+                <img src="Images/LadiesBlackShoe.jpg" alt="Shop Womens" />
                 <div class="card-overlay">
                     <h3>Shop Womens</h3>
                 </div>
@@ -1575,7 +1408,7 @@
 
             <!-- Card 2 -->
             <a href="/shop/mens" class="category-cards">
-                <img src="Images/IMG-20251018-WA0006.jpg" alt="Shop Mens" />
+                <img src="Images/GrayAirForce.png" alt="Shop Mens" />
                 <div class="card-overlay">
                     <h3>Shop Mens</h3>
                 </div>
@@ -1583,23 +1416,53 @@
 
             <!-- Card 3 -->
             <a href="/shop/sports" class="category-cards">
-                <img src="Images/IMG-20251018-WA0003.jpg" alt="Shop Sports" />
+                <img src="Images/CategorySho.jpg" alt="Shop Sports" />
                 <div class="card-overlay">
-                    <h3>Kids</h3>
+                    <h3>Shop Kids</h3>
                 </div>
             </a>
             <!-- Card 4 -->
             <a href="/shop/sports" class="category-cards">
                 <img src="Images/IMG-20251018-WA0022.jpg" alt="Shop Sports" />
                 <div class="card-overlay">
-                    <h3>Gyms</h3>
+                    <h3>Shop T-shirts</h3>
                 </div>
             </a>
             <!-- Card 5 -->
             <a href="/shop/sports" class="category-cards">
                 <img src="Images/IMG-20251018-WA0018.jpg" alt="Shop Sports" />
                 <div class="card-overlay">
-                    <h3>Smart Watches</h3>
+                    <h3>Shop Smart Phones</h3>
+                </div>
+            </a>
+            <!-- Card 6  -->
+            <a href="/shop/sports" class="category-cards">
+                <img src="Images/IMG-20251018-WA0018.jpg" alt="Shop Sports" />
+                <div class="card-overlay">
+                    <h3>Show Jerseys</h3>
+                </div>
+            </a>
+            <!-- Card 7  -->
+            <a href="/shop/sports" class="category-cards">
+                <img src="Images/IMG-20251018-WA0018.jpg" alt="Shop Sports" />
+                <div class="card-overlay">
+                    <h3>Shop Jackets</h3>
+                </div>
+            </a>
+
+            <!-- Card 8  -->
+            <a href="/shop/sports" class="category-cards">
+                <img src="Images/IMG-20251018-WA0018.jpg" alt="Shop Sports" />
+                <div class="card-overlay">
+                    <h3>Shop Jerseys</h3>
+                </div>
+            </a>
+
+            <!-- Card 9  -->
+            <a href="/shop/sports" class="category-cards">
+                <img src="Images/IMG-20251018-WA0018.jpg" alt="Shop Sports" />
+                <div class="card-overlay">
+                    <h3>Shop Art Painting</h3>
                 </div>
             </a>
 
@@ -1609,13 +1472,7 @@
 
 
 
-    <!-- PRODUCTS DISPLAY SECTION -->
-    <section class="products-section" id="products-section">
-        <h2 id="category-title" style="margin-bottom: 20px; color: #333;">All Products</h2>
-        <div class="products-grid" id="products-grid">
-            <!-- Products loaded by JS -->
-        </div>
-    </section>
+   
 
 
 
@@ -1806,22 +1663,79 @@
                 }, 300); // Delay for smoother page load
             });
 
-            // ===== HANDLE SIZE SELECTION =====
-            document.querySelectorAll('.size-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const productCard = this.closest('.product-card');
-                    const imgElement = productCard.querySelector('.shoe-image');
-                    const newImgSrc = this.getAttribute('data-img');
 
-                    // Update image
-                    imgElement.src = newImgSrc;
 
-                    // Update selected state
-                    productCard.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
-                    this.classList.add('selected');
+
+
+            document.addEventListener('DOMContentLoaded', function () {
+                    // ===== HANDLE SIZE SELECTION (your original logic, enhanced) =====
+                    document.querySelectorAll('.product-card').forEach(card => {
+                        const sizeButtons = card.querySelectorAll('.size-btn');
+                        if (sizeButtons.length <= 1) return;
+
+                        let autoRotateInterval = null;
+                        let isUserInteracted = false;
+
+                        // Function to update image and selection
+                        const updateImage = (button) => {
+                            const imgElement = card.querySelector('.shoe-image');
+                            const newImgSrc = button.getAttribute('data-img');
+
+                            imgElement.src = newImgSrc;
+
+                            sizeButtons.forEach(btn => btn.classList.remove('selected'));
+                            button.classList.add('selected');
+                        };
+
+                        // Set up click listeners
+                        sizeButtons.forEach(btn => {
+                            btn.addEventListener('click', function () {
+                                isUserInteracted = true; // Mark user interaction
+                                if (autoRotateInterval) {
+                                    clearInterval(autoRotateInterval);
+                                    autoRotateInterval = null;
+                                }
+                                updateImage(this);
+                            });
+                        });
+
+                        // ===== AUTO-ROTATION (only if no user interaction yet) =====
+                        let currentIndex = 0;
+
+                        const startAutoRotate = () => {
+                            autoRotateInterval = setInterval(() => {
+                                if (isUserInteracted) {
+                                    clearInterval(autoRotateInterval);
+                                    return;
+                                }
+
+                                currentIndex = (currentIndex + 1) % sizeButtons.length;
+                                const nextButton = sizeButtons[currentIndex];
+                                updateImage(nextButton);
+                            }, 3000);
+                        };
+
+                        // Start auto-rotation
+                        startAutoRotate();
+
+                        // Optional: Pause on hover (without stopping permanently)
+                        card.addEventListener('mouseenter', () => {
+                            if (autoRotateInterval && !isUserInteracted) {
+                                clearInterval(autoRotateInterval);
+                                autoRotateInterval = null;
+                            }
+                        });
+
+                        card.addEventListener('mouseleave', () => {
+                            if (!isUserInteracted) {
+                                // Resume from current index
+                                currentIndex = Array.from(sizeButtons).findIndex(btn => btn.classList.contains('selected'));
+                                if (currentIndex === -1) currentIndex = 0;
+                                startAutoRotate();
+                            }
+                        });
+                    });
                 });
-            });
-
 
             //BANNER ANIMATION
             // Animate banners on page load
@@ -1842,63 +1756,138 @@
                     });
                 });
 
+//catergory
+    
+document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.querySelector('.carousel-wrapper');
+        const cards = document.querySelectorAll('.category-cards');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
 
-    document.addEventListener('DOMContentLoaded', () => {
-            const wrapper = document.querySelector('.carousel-wrapper');
-            const cards = document.querySelectorAll('.category-card');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
+        if (cards.length === 0) return;
 
-            let currentIndex = 0;
-            let cardWidth = 0;
-            let gap = 16; // 1rem in px
+        let currentSlide = 0;
+        let autoSlideInterval = null;
 
-            function updateCardWidth() {
-                // Get computed width of first card + gap
-                const firstCard = cards[0];
-                const style = window.getComputedStyle(firstCard);
-                const margin = parseInt(style.marginRight) || 0;
-                cardWidth = firstCard.offsetWidth + gap + margin;
+        // Get number of cards per slide based on screen
+        function getCardsPerSlide() {
+        const width = window.innerWidth;
+        if (width >= 1024) return 3;   // Desktop
+        if (width >= 768) return 2;    // Tablet
+        return 1;                      // Mobile
+    }
+
+        // Total number of slides needed
+        function getTotalSlides() {
+        const perSlide = getCardsPerSlide();
+        return Math.ceil(cards.length / perSlide);
+    }
+
+        // Calculate offset to show a specific slide
+        function getSlideOffset(slideIndex) {
+        if (cards.length === 0) return 0;
+        const perSlide = getCardsPerSlide();
+        const card = cards[0];
+        const cardWidth = card.offsetWidth;
+
+        // Get computed gap between cards (from CSS gap or margin)
+        const style = window.getComputedStyle(wrapper);
+        const gap = parseFloat(style.getPropertyValue('gap')) || 0;
+
+        const totalCardWidth = cardWidth + gap;
+        return -slideIndex * perSlide * totalCardWidth;
+    }
+
+        // Update navigation button states
+        function updateButtons() {
+            prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide >= getTotalSlides() - 1;
+    }
+
+        // Go to a specific slide
+        function goToSlide(slideIndex) {
+        const totalSlides = getTotalSlides();
+        if (slideIndex < 0 || slideIndex >= totalSlides) return;
+
+        currentSlide = slideIndex;
+        const offset = getSlideOffset(currentSlide);
+        wrapper.style.transform = `translateX(${offset}px)`;
+        wrapper.style.transition = 'transform 0.6s ease-in-out';
+        updateButtons();
+    }
+
+        // Auto-rotate: advance one slide, loop back to 0 at end
+        function startAutoRotate() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+            const totalSlides = getTotalSlides();
+            if (currentSlide >= totalSlides - 1) {
+            goToSlide(0); // Loop to start
+            } else {
+            goToSlide(currentSlide + 1);
             }
+        }, 5000); // 5 seconds
+    }
 
-            function updateButtons() {
-                prevBtn.disabled = currentIndex === 0;
-                nextBtn.disabled = currentIndex >= cards.length - Math.floor(wrapper.offsetWidth / cardWidth);
-            }
+        // Stop auto-rotate (on user interaction)
+        function stopAutoRotate() {
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+        }
+    }
 
-            function scrollToIndex(index) {
-                if (index < 0 || index > cards.length - 1) return;
+        // Initialize carousel
+        function initCarousel() {
+            // Reset transition for instant initial layout
+            wrapper.style.transition = 'none';
+        goToSlide(currentSlide);
+        // Trigger reflow
+        void wrapper.offsetWidth;
+        // Re-enable transition
+        wrapper.style.transition = 'transform 0.6s ease-in-out';
+        startAutoRotate();
+    }
 
-                currentIndex = index;
-                const offset = -index * cardWidth;
-                wrapper.style.transform = `translateX(${offset}px)`;
-                updateButtons();
-            }
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+            stopAutoRotate();
+        if (currentSlide > 0) {
+            goToSlide(currentSlide - 1);
+        }
+    });
 
-            // Initialize
-            updateCardWidth();
-            updateButtons();
+    nextBtn.addEventListener('click', () => {
+            stopAutoRotate();
+        if (currentSlide < getTotalSlides() - 1) {
+            goToSlide(currentSlide + 1);
+        }
+    });
 
-            // Resize handler
-            window.addEventListener('resize', () => {
-                updateCardWidth();
-                updateButtons();
-                scrollToIndex(currentIndex); // Realign if needed
-            });
+        // Handle resize
+        let resizeTimer;
+    window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            // Try to preserve logical slide position
+            const oldPerSlide = getCardsPerSlide(); // This is new value after resize
+        // We keep currentSlide index, but it may need clamping
+        currentSlide = Math.min(currentSlide, getTotalSlides() - 1);
+        initCarousel();
+        }, 250);
+    });
 
-            // Button handlers
-            prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    scrollToIndex(currentIndex - 1);
-                }
-            });
+        // Start
+        initCarousel();
+});
 
-            nextBtn.addEventListener('click', () => {
-                if (currentIndex < cards.length - 1) {
-                    scrollToIndex(currentIndex + 1);
-                }
-            });
-        });
+        
+
+
+
+
+
+
     </script>
 
 </body>
